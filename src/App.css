@@ -15,6 +15,11 @@ body {
     --dark-blue: #202745;
     --gray: #8A8C97;
     --white: #fff;
+    --red: #EB5757;
+
+    --font-size: 15px;
+
+    --box-shadow--main: 0 20px 50px rgba(0, 0, 0, 0.8);
 
     --card_title-color: #fff;
     --card_title-font-size: 15px;
