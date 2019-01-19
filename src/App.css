@@ -9,7 +9,7 @@ body {
 
     --background_page: rgb(21, 26, 48); 
     --header_background: #202745;
-    /* --background_content: transparent; */
+    --background_content: transparent;
 
     --blue: #327CF6;
     --dark-blue: #202745;
@@ -26,4 +26,17 @@ body {
 
     --change-city_item-font-size: 15px;
     --change-city_item-hover-bg: rgb(44, 49, 69);
+}
+
+.PanelHeader-bg::after {
+    content: none !important;
+}
+
+.Group {
+    margin-top: 20px;
+}
+
+.Group::before,
+.Group::after {
+    content: none;
 }
