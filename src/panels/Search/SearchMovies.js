@@ -12,8 +12,8 @@ import './SearchMovies.css';
 
 export default class SearchMovies extends React.Component {
     static propTypes = {
-        go: func.isRequired,
         movies: arrayOf(object),
+        onSetMovie: func,
     };
 
     state = {
@@ -22,7 +22,7 @@ export default class SearchMovies extends React.Component {
     };
 
     render() {
-        const { go } = this.props;
+        const { onSetMovie } = this.props;
         const { results, isNotFound } = this.state;
         const { 
             handleSearch,
@@ -43,7 +43,10 @@ export default class SearchMovies extends React.Component {
                     {(results && results.length > 0) ?
                         <ul className="search-movies__movies">
                             {results.map(movie =>
-                                <li className="search-movies__movie" key={movie.ObjectID} onClick={go} data-to="movie">
+                                <li 
+                                    className="search-movies__movie" 
+                                    key={movie.ObjectID} 
+                                    onClick={onSetMovie && (() => onSetMovie(movie))}>
                                     <Card
                                         cover={movie.Thumbnail}
                                         title={movie.Name}

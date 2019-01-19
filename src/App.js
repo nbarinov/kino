@@ -10,6 +10,7 @@ import sortByDistance from './helpers/sort-by-distance';
 import Home from './panels/Home';
 import Cities from './panels/Cities';
 import Search from './panels/Search';
+import Movie from './panels/Movie';
 
 import './App.css';
 
@@ -23,6 +24,7 @@ class App extends React.Component {
 		geo: null,
 		cities: null,
 		city: null,
+		movie: null,
 	};
 
 	componentWillMount() {
@@ -79,7 +81,8 @@ class App extends React.Component {
 				<Home 
 					id="home" 
 					go={this.go} 
-					city={this.state.city} />
+					city={this.state.city}
+					onSetMovie={this.handleSetMovie} />
 				<Cities 
 					id="cities" 
 					go={this.go} 
@@ -89,7 +92,12 @@ class App extends React.Component {
 				<Search
 					id="search"
 					go={this.go}
-					city={this.state.city} />
+					city={this.state.city}
+					onSetMovie={this.handleSetMovie} />
+				<Movie
+					id="movie"
+					go={this.go}
+					movie={this.state.movie} />
 			</View>
 		);
 	}
@@ -100,6 +108,8 @@ class App extends React.Component {
 		});
 
 	handleChangeCity = city => this.setState({ city });
+	
+	handleSetMovie = movie => this.setState(({ movie }), () => this.go('movie'));
 }
 
 export default App;

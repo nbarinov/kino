@@ -15,7 +15,7 @@ import Card from '../../components/Card';
 
 import './Home.css';
 
-const Home = ({ id, go, city }) => (
+const Home = ({ id, go, city, onSetMovie }) => (
 	<Panel id={id}>
 		<PanelHeader
 			left={<HeaderButton onClick={go} data-to="search"><Icon24Search /></HeaderButton>}
@@ -55,7 +55,10 @@ const Home = ({ id, go, city }) => (
 
 							return <ul className="home__movies">
 								{data.movies.map(movie =>
-									<li className="home__movie" key={movie.ObjectID} onClick={go} data-to="movie">
+									<li 
+										className="home__movie" 
+										key={movie.ObjectID}
+										onClick={onSetMovie && (() => onSetMovie(movie))}>
 										<Card
 											cover={movie.Thumbnail}
 											title={movie.Name}
@@ -79,6 +82,7 @@ Home.propTypes = {
 		CityID: string.isRequired,
 		Name: string.isRequired
 	}),
+	onSetMovie: func
 };
 
 export default Home;

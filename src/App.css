@@ -32,6 +32,10 @@ body {
 
     --change-city_item-font-size: 15px;
     --change-city_item-hover-bg: rgba(255, 255, 255, 0.1);
+
+    --movie-color: #fff;
+    --movie_name-font-size: 24px;
+    --movie_description-font-size: 13px;
 }
 
 .PanelHeader-bg::after {

@@ -16,45 +16,41 @@ import './Search.css';
 
 const osname = platform();
 
-const Search = ({ id, go, city, handleSearch }) => {
+const Search = ({ id, go, city, onSetMovie }) =>
+    <Panel id={id}>
+        <PanelHeader
+            left={<HeaderButton onClick={go} data-to="home">
+                {osname === IOS ? <Icon28ChevronBack /> : <Icon24Back />}
+            </HeaderButton>}
+            children="Поиск" />
 
-    return (
-        <Panel id={id}>
-            <PanelHeader
-                left={<HeaderButton onClick={go} data-to="home">
-                    {osname === IOS ? <Icon28ChevronBack /> : <Icon24Back />}
-                </HeaderButton>}
-                children="Поиск" />
+        {(city && city.CityID) ?
+            <Query
+                query={gql`
+                    query {
+                        movies (CityID: ${city.CityID}) {
+                            ObjectID,
+                            Name,
+                            Thumbnail,
+                            Genre,
+                            AgeRestriction
+                        }
+                    }
+                `}>
+                {({ loading, error, data }) => {
+                    if (loading) return <Loader center={true} />;
+                    if (error) return <p>Error :(</p>;
 
-            {(city && city.CityID) ?
-                <Query
-                    query={gql`
-						query {
-							movies (CityID: ${city.CityID}) {
-								ObjectID,
-								Name,
-								Thumbnail,
-								Genre,
-								AgeRestriction
-							}
-						}
-					`}>
-                    {({ loading, error, data }) => {
-                        if (loading) return <Loader center={true} />;
-                        if (error) return <p>Error :(</p>;
+                    return <SearchMovies movies={data.movies} onSetMovie={onSetMovie} />;
+                }}
+            </Query> :
+            <Message
+                type="report"
+                action={<Button size="xl" level="2" onClick={go} data-to="cities" children="Выбрать город" />}>
+                Чтобы посмотреть доступные<br />сеансы, выберите город
+            </Message>}
 
-                        return <SearchMovies movies={data.movies} />;
-                    }}
-                </Query> :
-                <Message
-                    type="report"
-                    action={<Button size="xl" level="2" onClick={go} data-to="cities" children="Выбрать город" />}>
-                    Чтобы посмотреть доступные<br />сеансы, выберите город
-                </Message>}
-
-        </Panel>
-    );
-};
+    </Panel>;
 
 Search.propTypes = {
     id: string.isRequired,
@@ -62,6 +58,7 @@ Search.propTypes = {
     city: shape({
         CityID: string.isRequired,
     }),
+    onSetMovie: func,
 };
 
 export default Search;
