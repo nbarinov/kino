@@ -28,3 +28,22 @@
 .home__change-city-icon {
     color: var(--gray);
 }
+
+.home__movies {
+    display: flex;
+    flex-wrap: wrap;
+
+    list-style: none;
+}
+
+.home__movie {
+    display: flex;
+    justify-content: center;
+    
+    width: 50%;
+    margin-bottom: 24px;
+}
+
+.home__movie:nth-last-child(-n + 2) {
+    margin-bottom: 0;
+}
