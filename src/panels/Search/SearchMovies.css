@@ -1,0 +1,46 @@
+.search-movies__movies {
+    display: flex;
+    flex-wrap: wrap;
+
+    list-style: none;
+}
+
+.search-movies__movie {
+    display: flex;
+    justify-content: center;
+    
+    width: 50%;
+    margin-bottom: 24px;
+}
+
+.search-movies__movie:nth-last-child(-n + 2) {
+    margin-bottom: 0;
+}
+
+.search-movies__not-found-message {
+    position: absolute;
+    top: 25vh;
+    left: 0;
+    z-index: 10;
+
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100vw;
+}
+
+.search-movies__not-found-message img {
+    width: 100px;
+}
+
+.search-movies__not-found-message p {
+    margin-top: 20px;
+
+    font-size: 11px;
+    color: var(--gray);
+    text-align: center;
+    text-transform: uppercase;
+}

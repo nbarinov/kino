@@ -9,6 +9,7 @@ import sortByDistance from './helpers/sort-by-distance';
 
 import Home from './panels/Home';
 import Cities from './panels/Cities';
+import Search from './panels/Search';
 
 import './App.css';
 
@@ -85,6 +86,10 @@ class App extends React.Component {
 					cities={this.state.cities} 
 					city={this.state.city} 
 					onChange={this.handleChangeCity} />
+				<Search
+					id="search"
+					go={this.go}
+					city={this.state.city} />
 			</View>
 		);
 	}
