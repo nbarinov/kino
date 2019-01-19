@@ -1,0 +1,41 @@
+.message {
+    position: relative;
+    z-index: 10;
+
+    width: 100vw;
+    height: 100vh;
+}
+
+.message__wrapper {
+    position: absolute;
+    top: 25vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+
+    width: 100%;
+    max-width: calc(100% - 40px);
+
+    border-radius: 2px;
+    
+    background-color: var(--dark-blue);
+
+    font-size: var(--font-size);
+    font-weight: 500;
+    color: var(--white);
+
+    box-shadow: var(--box-shadow--main);
+}
+
+.message__icon {
+    margin: 25px auto;
+}
+
+.message__icon--report {
+    color: var(--red);
+}
+
+.message__children {
+    margin-bottom: 20px;
+
+    text-align: center;
+}
