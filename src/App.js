@@ -5,7 +5,6 @@ import { View } from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
 
 import Home from './panels/Home';
-import Persik from './panels/Persik';
 
 import './App.css';
 
@@ -15,16 +14,12 @@ class App extends React.Component {
 
 		this.state = {
 			activePanel: 'home',
-			fetchedUser: null,
 		};
 	}
 
 	componentDidMount() {
 		connect.subscribe((e) => {
 			switch (e.detail.type) {
-				case 'VKWebAppGetUserInfoResult':
-					this.setState({ fetchedUser: e.detail.data });
-					break;
 				default:
 					console.log(e.detail.type);
 			}
@@ -39,8 +34,7 @@ class App extends React.Component {
 	render() {
 		return (
 			<View activePanel={this.state.activePanel}>
-				<Home id="home" fetchedUser={this.state.fetchedUser} go={this.go} />
-				<Persik id="persik" go={this.go} />
+				<Home id="home" go={this.go} />
 			</View>
 		);
 	}
