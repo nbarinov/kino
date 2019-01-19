@@ -1,0 +1,24 @@
+.input {
+    width: 100%;
+    height: 30px;
+
+    border-radius: 0;
+
+    border-width: 0 0 1px 0;
+    border-color: var(--input_border-color);
+
+    background-color: transparent;
+
+    font-size: var(--input_font-size);
+    font-weight: 500;
+    color: var(--input_color);
+
+    transform: border-color 150ms ease-in; 
+
+    outline: 0;
+}
+
+.input:hover,
+.input:focus {
+    border-color: var(--blue);
+}
