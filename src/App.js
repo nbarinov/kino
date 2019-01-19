@@ -1,4 +1,5 @@
 import React from 'react';
+import { arrayOf, object } from 'prop-types';
 
 import connect from '@vkontakte/vkui-connect';
 import { View } from '@vkontakte/vkui';
@@ -9,12 +10,19 @@ import Home from './panels/Home';
 import './App.css';
 
 class App extends React.Component {
-	constructor(props) {
-		super(props);
+	static propTypes = {
+		cities: arrayOf(object),
+	}
 
-		this.state = {
-			activePanel: 'home',
-		};
+	state = {
+		activePanel: 'home',
+		cities: null,
+	};
+
+	componentWillMount() {
+		if (this.props.cities) {
+			this.setState({ cities: this.props.cities });
+		}
 	}
 
 	componentDidMount() {
