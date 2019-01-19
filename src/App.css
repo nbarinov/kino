@@ -3,3 +3,27 @@
     margin: 0;
     padding: 0;
 }
+
+body {
+    color: #fff;
+
+    --background_page: rgb(21, 26, 48); 
+    --header_background: #202745;
+    /* --background_content: transparent; */
+
+    --blue: #327CF6;
+    --dark-blue: #202745;
+    --gray: #8A8C97;
+
+    --card_title-color: #fff;
+    --card_title-font-size: 15px;
+    --card_hint-color: #8A8C97;
+    --card_hint-font-size: 12px;
+
+    --input_border-color: #fff;
+    --input_font-size: 15px;
+    --input_color: #fff;
+
+    --change-city_item-font-size: 15px;
+    --change-city_item-hover-bg: rgb(44, 49, 69);
+}
