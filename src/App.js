@@ -8,6 +8,7 @@ import '@vkontakte/vkui/dist/vkui.css';
 import sortByDistance from './helpers/sort-by-distance';
 
 import Home from './panels/Home';
+import Cities from './panels/Cities';
 
 import './App.css';
 
@@ -71,17 +72,29 @@ class App extends React.Component {
 		}
 	}
 
-	go = (e) => {
-		this.setState({ activePanel: e.currentTarget.dataset.to })
-	};
-
 	render() {
 		return (
 			<View activePanel={this.state.activePanel}>
-				<Home id="home" go={this.go} city={this.state.city} />
+				<Home 
+					id="home" 
+					go={this.go} 
+					city={this.state.city} />
+				<Cities 
+					id="cities" 
+					go={this.go} 
+					cities={this.state.cities} 
+					city={this.state.city} 
+					onChange={this.handleChangeCity} />
 			</View>
 		);
 	}
+
+	go = e =>
+		this.setState({ 
+			activePanel: (typeof e === 'object') ? e.currentTarget.dataset.to : e, 
+		});
+
+	handleChangeCity = city => this.setState({ city });
 }
 
 export default App;

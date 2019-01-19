@@ -1,5 +1,5 @@
 import React from 'react';
-import { string, number, func, shape } from 'prop-types';
+import { string, func, shape } from 'prop-types';
 
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
@@ -23,7 +23,7 @@ const Home = ({ id, go, city }) => (
 
 		<Group>
 			<Div>
-				<button className="home__change-city-button" onClick={go} data-to="change-city">
+				<button className="home__change-city-button" onClick={go} data-to="cities">
 					<span className="home__change-city-title">
 						{(city && city.Name) ?
 							`г. ${city.Name}` :
@@ -76,7 +76,7 @@ Home.propTypes = {
 	id: string.isRequired,
 	go: func.isRequired,
 	city: shape({
-		CityID: number.isRequired,
+		CityID: string.isRequired,
 		Name: string.isRequired
 	}),
 };

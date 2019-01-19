@@ -26,7 +26,7 @@ body {
     --input_color: #fff;
 
     --change-city_item-font-size: 15px;
-    --change-city_item-hover-bg: rgb(44, 49, 69);
+    --change-city_item-hover-bg: rgba(255, 255, 255, 0.1);
 }
 
 .PanelHeader-bg::after {
@@ -48,6 +48,11 @@ body {
     padding-right: 20px;
     padding-bottom: 0;
     padding-left: 20px;
+}
+
+.Div--p-0 {
+    padding-right: 0;
+    padding-left: 0;
 }
 
 .Button {

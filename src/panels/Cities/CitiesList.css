@@ -1,0 +1,24 @@
+.cities-list {
+    list-style: none;
+}
+
+.cities-list__item {
+    height: 39px;
+    padding-right: 20px;
+    padding-left: 20px;
+
+    font-size: var(--cities_item-font-size);
+    font-weight: 500;
+    line-height: 39px;
+    color: var(--white);
+
+    transition: background-color 150ms ease-in;
+
+    outline: 0;
+}
+
+.cities-list__item:hover,
+.cities-list__item:focus {
+    background-color: rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+}

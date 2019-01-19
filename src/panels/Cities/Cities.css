@@ -1,0 +1,19 @@
+.cities__current-city {
+    display: flex;
+    justify-content: space-between;
+    
+    margin-top: 20px;
+}
+
+.cities__current-city-title {
+    color: var(--blue);
+}
+
+.cities__current-city-icon {
+    color: var(--blue);
+}
+
+.cities__error {
+    color: var(--white);
+    text-align: center;
+}
