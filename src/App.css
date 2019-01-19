@@ -14,6 +14,7 @@ body {
     --blue: #327CF6;
     --dark-blue: #202745;
     --gray: #8A8C97;
+    --white: #fff;
 
     --card_title-color: #fff;
     --card_title-font-size: 15px;
@@ -34,9 +35,23 @@ body {
 
 .Group {
     margin-top: 20px;
+    margin-bottom: 0;
 }
 
 .Group::before,
 .Group::after {
     content: none;
+}
+
+.Div {
+    padding-top: 0;
+    padding-right: 20px;
+    padding-bottom: 0;
+    padding-left: 20px;
+}
+
+.Button {
+    border-radius: 2px !important;
+    background-color: var(--blue);
+    color: #fff;
 }
