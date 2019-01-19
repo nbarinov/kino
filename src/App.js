@@ -1,10 +1,13 @@
 import React from 'react';
+
 import connect from '@vkontakte/vkui-connect';
 import { View } from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
 
 import Home from './panels/Home';
 import Persik from './panels/Persik';
+
+import './App.css';
 
 class App extends React.Component {
 	constructor(props) {
