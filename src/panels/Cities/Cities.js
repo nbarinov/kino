@@ -87,7 +87,6 @@ export default class Cities extends Component {
     };
 
     handleChangeCity = city => {
-        console.log(city);
         if (this.props.onChange) {
             this.props.onChange(city);
             this.props.go('home');
