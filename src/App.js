@@ -5,7 +5,7 @@ import connect from '@vkontakte/vkui-connect';
 import { View } from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
 
-import sortByDistance from 'sort-by-distance';
+import sortByDistance from './helpers/sort-by-distance';
 
 import Home from './panels/Home';
 
