@@ -4,7 +4,7 @@ import { string, func, shape } from 'prop-types';
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 
-import { Panel, Group, Div, PanelHeader, HeaderButton } from '@vkontakte/vkui';
+import { Panel, Group, Div, PanelHeader, HeaderButton, Spinner } from '@vkontakte/vkui';
 import Icon24Search from '@vkontakte/icons/dist/24/search';
 import Icon24Write from '@vkontakte/icons/dist/24/write';
 
@@ -50,7 +50,7 @@ const Home = ({ id, go, city, onSetMovie }) => (
 							}
 						`}>
 						{({ loading, error, data }) => {
-							if (loading) return <Loader center={true} />;
+							if (loading) return <Loader />;
 							if (error) return <p>Error :(</p>;
 
 							return <ul className="home__movies">

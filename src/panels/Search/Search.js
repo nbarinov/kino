@@ -38,7 +38,7 @@ const Search = ({ id, go, city, onSetMovie }) =>
                     }
                 `}>
                 {({ loading, error, data }) => {
-                    if (loading) return <Loader center={true} />;
+                    if (loading) return <Loader />;
                     if (error) return <p>Error :(</p>;
 
                     return <SearchMovies movies={data.movies} onSetMovie={onSetMovie} />;
