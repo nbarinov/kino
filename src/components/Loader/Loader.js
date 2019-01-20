@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { string, bool } from 'prop-types';
+import { string } from 'prop-types';
 
 import { Spinner } from '@vkontakte/vkui';
 

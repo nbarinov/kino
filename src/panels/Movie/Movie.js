@@ -66,16 +66,16 @@ const Movie = ({ id, go, movie }) =>
                                     slideWidth="auto"
                                     align="right">
                                     <div className="movie__gallery-item" key="slide-1">
-                                        <img src={movie.Thumbnail} />
+                                        <img src={movie.Thumbnail} alt="slide-item" />
                                     </div>
                                     <div className="movie__gallery-item" key="slide-2">
-                                        <img src={movie.HorizonalThumbnail} />
+                                        <img src={movie.HorizonalThumbnail} alt="slide-item" />
                                     </div>
                                     <div className="movie__gallery-item" key="slide-2">
-                                        <img src={movie.HorizonalThumbnail} />
+                                        <img src={movie.HorizonalThumbnail} alt="slide-item" />
                                     </div>
                                     <div className="movie__gallery-item" key="slide-1">
-                                        <img src={movie.Thumbnail} />
+                                        <img src={movie.Thumbnail} alt="slide-item" />
                                     </div>
                                 </Gallery>
                             
