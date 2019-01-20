@@ -6,7 +6,7 @@ import { Spinner } from '@vkontakte/vkui';
 
 import './Loader.css';
 
-const Loader = ({ className }) => <Spinner className={classNames(className, 'loader')} />;
+const Loader = ({ className, ...props }) => <Spinner {...props} className={classNames(className, 'loader')} />;
 
 Loader.propTypes = {
     className: string,

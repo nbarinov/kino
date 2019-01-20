@@ -51,7 +51,7 @@ const Movie = ({ id, go, movie }) =>
                     }
                 `}>
                 {({ loading, error, data }) => {
-                    if (loading) return <Loader />;
+                    if (loading) return <Loader style={{ marginTop: 20 }} />;
                     if (error) return <p>Error :(</p>;
 
                     const movie = data.movie;
