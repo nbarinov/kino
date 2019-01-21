@@ -47,3 +47,31 @@
 .home__movie:nth-last-child(-n + 2) {
     margin-bottom: 0;
 }
+
+.home__not-found-message {
+    position: absolute;
+    top: 25vh;
+    left: 0;
+    z-index: 10;
+
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100vw;
+}
+
+.home__not-found-message img {
+    width: 100px;
+}
+
+.home__not-found-message p {
+    margin-top: 20px;
+
+    font-size: 11px;
+    color: var(--gray);
+    text-align: center;
+    text-transform: uppercase;
+}

@@ -13,6 +13,8 @@ import { APP_NAME } from '../../config';
 import Loader from '../../components/Loader';
 import Card from '../../components/Card';
 
+import filmStrip from '../../svg/film-strip.svg';
+
 import './Home.css';
 
 const Home = ({ id, go, city, onSetMovie, isAvailableGeo, onGetGeodata }) => (
@@ -55,20 +57,25 @@ const Home = ({ id, go, city, onSetMovie, isAvailableGeo, onGetGeodata }) => (
 							if (loading) return <Loader />;
 							if (error) return <p>Error :(</p>;
 
-							return <ul className="home__movies">
-								{data.movies.map(movie =>
-									<li 
-										className="home__movie" 
-										key={movie.ObjectID}
-										onClick={onSetMovie && (() => onSetMovie(movie))}>
-										<Card
-											cover={movie.Thumbnail}
-											title={movie.Name}
-											genre={movie.Genre}
-											ageRestriction={movie.AgeRestriction} />
-									</li>
-								)}
-							</ul>;
+							return (data && data.length > 0) ?
+								<ul className="home__movies">
+									{data.movies.map(movie =>
+										<li 
+											className="home__movie" 
+											key={movie.ObjectID}
+											onClick={onSetMovie && (() => onSetMovie(movie))}>
+											<Card
+												cover={movie.Thumbnail}
+												title={movie.Name}
+												genre={movie.Genre}
+												ageRestriction={movie.AgeRestriction} />
+										</li>
+									)}
+								</ul>:
+								<Div className="home__not-found-message">
+									<img src={filmStrip} alt="кино-лента" />
+									<p children="В вашем городе мы не нашли фильмов :(" />
+								</Div>
 						}}
 					</Query>
 				</Div>
