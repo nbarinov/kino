@@ -57,7 +57,7 @@ const Home = ({ id, go, city, onSetMovie, isAvailableGeo, onGetGeodata }) => (
 							if (loading) return <Loader />;
 							if (error) return <p>Error :(</p>;
 
-							return (data.movie && data.movie.length > 0) ?
+							return (data.movies && data.movies.length > 0) ?
 								<ul className="home__movies">
 									{data.movies.map(movie =>
 										<li 
