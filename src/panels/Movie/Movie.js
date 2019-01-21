@@ -60,7 +60,7 @@ const Movie = ({ id, go, movie }) =>
                         <Group className="movie__group">
                             <Div className="movie__bg" style={{ backgroundImage: `url('${movie.Thumbnail}')` }} />
 
-                            <Group className="movie__content">
+                            <Group className="movie__content" style={{ top: osname !== IOS ? 30 : 0 }}>
                                 <Gallery
                                     className="movie__gallery"
                                     slideWidth="auto"

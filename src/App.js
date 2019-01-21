@@ -7,6 +7,7 @@ import '@vkontakte/vkui/dist/vkui.css';
 
 import sortByDistance from './helpers/sort-by-distance';
 
+import Welcome from './panels/Welcome';
 import Home from './panels/Home';
 import Cities from './panels/Cities';
 import Search from './panels/Search';
@@ -20,16 +21,31 @@ class App extends React.Component {
 	}
 
 	state = {
-		activePanel: 'home',
+		activePanel: 'welcome',
 		geo: null,
+		isAvailableGeo: null,
 		cities: null,
 		city: null,
 		movie: null,
 	};
 
 	componentWillMount() {
+		let cities = null;
+		let activePanel = 'welcome';
+
 		if (this.props.cities) {
-			this.setState({ cities: this.props.cities });
+			cities = this.props.cities;
+		}
+
+		if (localStorage.getItem('welcome-done')) {
+			activePanel = 'home';
+		}
+
+		if (cities !== null || activePanel !== 'welcome') {
+			this.setState({
+				activePanel,
+				cities
+			});
 		}
 	}
 
@@ -37,14 +53,21 @@ class App extends React.Component {
 		connect.subscribe((e) => {
 			switch (e.detail.type) {
 				case 'VKWebAppGeodataResult':
-					this.setState({ geo: e.detail.data });
+					this.setState({ 
+						geo: e.detail.data,
+						isAvailableGeo: true,
+					});
+					localStorage.setItem('geodata-available', true);
 					break;
 				default:
-					console.log(e.detail.type);
+					console.log(e.detail);
 			}
 		});
 
-		connect.send("VKWebAppGetGeodata", {});
+		// если разрешено получение геоданных
+		if (localStorage.getItem('geodata-available')) {
+			connect.send("VKWebAppGetGeodata", {})
+		}
 	}
 
 	componentDidUpdate() {
@@ -78,9 +101,18 @@ class App extends React.Component {
 	render() {
 		return (
 			<View activePanel={this.state.activePanel}>
+				<Welcome
+					id="welcome"
+					isAvailableGeo={this.state.isAvailableGeo}
+					city={this.state.city}
+					onGetGeodata={this.handleGetGeodata}
+					onAllowNotofication={this.handleAllowNotofication}
+					skipWelcome={this.skipWelcome} />
 				<Home 
 					id="home" 
 					go={this.go} 
+					isAvailableGeo={this.state.isAvailableGeo}
+					onGetGeodata={this.handleGetGeodata}
 					city={this.state.city}
 					onSetMovie={this.handleSetMovie} />
 				<Cities 
@@ -110,6 +142,15 @@ class App extends React.Component {
 	handleChangeCity = city => this.setState({ city });
 	
 	handleSetMovie = movie => this.setState(({ movie }), () => this.go('movie'));
+
+	handleGetGeodata = () => connect.send("VKWebAppGetGeodata", {}) || this.setState({ isAvailableGeo: false });
+
+	handleAllowNotofication = () => connect.send("VKWebAppAllowNotifications", {}) || this.skipWelcome();
+
+	skipWelcome = () => {
+		localStorage.setItem('welcome-done', true);
+		this.go('home');
+	}
 }
 
 export default App;

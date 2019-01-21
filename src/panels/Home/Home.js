@@ -15,7 +15,7 @@ import Card from '../../components/Card';
 
 import './Home.css';
 
-const Home = ({ id, go, city, onSetMovie }) => (
+const Home = ({ id, go, city, onSetMovie, isAvailableGeo, onGetGeodata }) => (
 	<Panel id={id}>
 		<PanelHeader
 			left={<HeaderButton onClick={go} data-to="search"><Icon24Search /></HeaderButton>}
@@ -23,11 +23,13 @@ const Home = ({ id, go, city, onSetMovie }) => (
 
 		<Group>
 			<Div>
-				<button className="home__change-city-button" onClick={go} data-to="cities">
+				<button className="home__change-city-button" onClick={(isAvailableGeo === null) ? onGetGeodata : go} data-to="cities">
 					<span className="home__change-city-title">
 						{(city && city.Name) ?
 							`г. ${city.Name}` :
-							'Выбрать город...'}
+							(isAvailableGeo === false) ?
+								'Выбрать город...' :
+								'Определить город...'}
 					</span>
 					<Icon24Write className="home__change-city-icon" />
 				</button>
@@ -82,7 +84,8 @@ Home.propTypes = {
 		CityID: string.isRequired,
 		Name: string.isRequired
 	}),
-	onSetMovie: func
+	onSetMovie: func,
+	onGetGeodata: func.isRequired,
 };
 
 export default Home;
