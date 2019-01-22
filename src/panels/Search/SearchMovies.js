@@ -30,7 +30,7 @@ export default class SearchMovies extends React.Component {
         } = this;
 
         return [
-            <Group key="search-input">
+            <Group key="search-input" className="search-movies__group">
                 <Div>
                     <Input
                         className="search-movies__q"
@@ -38,7 +38,7 @@ export default class SearchMovies extends React.Component {
                         onChange={handleSearch} />
                 </Div>
             </Group>,
-            <Group key="results">
+            <Group key="results" className="search-movies__group">
                 <Div>
                     {(results && results.length > 0) ?
                         <ul className="search-movies__movies">

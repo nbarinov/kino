@@ -57,10 +57,10 @@ const Movie = ({ id, go, movie }) =>
                     const movie = data.movie;
 
                     return (
-                        <Group className="movie__group">
+                        <Group className="movie">
                             <Div className="movie__bg" style={{ backgroundImage: `url('${movie.Thumbnail}')` }} />
 
-                            <Group className="movie__content" style={{ top: osname !== IOS ? 30 : 0 }}>
+                            <Group className="movie__content">
                                 <Gallery
                                     className="movie__gallery"
                                     slideWidth="auto"
