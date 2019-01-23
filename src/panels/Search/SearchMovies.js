@@ -39,8 +39,8 @@ export default class SearchMovies extends React.Component {
                 </Div>
             </Group>,
             <Group key="results" className="search-movies__group">
-                <Div>
-                    {(results && results.length > 0) ?
+                {(results && results.length > 0) ?
+                    <Div>
                         <ul className="search-movies__movies">
                             {results.map(movie =>
                                 <li 
@@ -54,9 +54,9 @@ export default class SearchMovies extends React.Component {
                                         ageRestriction={movie.AgeRestriction} />
                                 </li>
                             )}
-                        </ul> :
-                        (isNotFound) && renderNotFoundMessage()}
-                </Div>
+                        </ul>
+                    </Div> :
+                    (isNotFound) && renderNotFoundMessage()}
             </Group>
         ];
     }
