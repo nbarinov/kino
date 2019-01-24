@@ -129,7 +129,9 @@ class App extends React.Component {
 				<Movie
 					id="movie"
 					go={this.go}
-					movie={this.state.movie} />
+					movie={this.state.movie}
+					city={this.state.city}
+					geo={this.state.geo}  />
 			</View>
 		);
 	}
