@@ -117,8 +117,7 @@ export default class Movie extends React.Component {
                                                     if (error) return <p>Error :(</p>;
 
                                                     window.location.href = data.schedule_url.Url;
-
-                                                    setTimeout(toggleLink, 200);
+                                                    setTimeout(this.toggleLink, 200);
 
                                                     return <Loader style={{ marginTop: 20 }} />;
                                                 }}
@@ -128,7 +127,7 @@ export default class Movie extends React.Component {
                                                 size="xl"
                                                 level="2"
                                                 children="Расписание и билеты"
-                                                onClick={this.loadingLink} />}
+                                                onClick={this.toggleLink} />}
 
                                         <Div className="movie__description">
                                             <ShowMoreText

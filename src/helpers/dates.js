@@ -1,6 +1,6 @@
 import moment from 'moment';
 
-moment.local('ru');
+moment.locale('ru');
 
 export const localDate = (date = null, format = 'YYYY-MM-DD HH:mm:ss') => {
     if (!date) {
