@@ -44,7 +44,6 @@ export default class Movie extends React.Component {
     render() {
         const { id, go, movie, geo, city } = this.props;
         const { loadingLink } = this.state;
-        console.log(geo);
 
         return (movie) ?
             <Panel id={id}>
@@ -125,6 +124,8 @@ export default class Movie extends React.Component {
 
                                                     window.location.href = data.schedule_url.Url;
 
+                                                    setTimeout(toggleLink, 200);
+
                                                     return <Loader style={{ marginTop: 20 }} />;
                                                 }}
                                             </Query> :
@@ -181,5 +182,5 @@ export default class Movie extends React.Component {
             go('home') || null;
     }
 
-    loadingLink = () => this.setState({ loadingLink: true });
+    toggleLink = () => this.setState(({ loadingLink }) => ({ loadingLink: !loadingLink }));
 }
