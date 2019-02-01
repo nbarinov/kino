@@ -74,7 +74,7 @@ const Home = ({ id, go, city, onSetMovie, isAvailableGeo, onGetGeodata }) => (
 								</ul>:
 								<Div className="home__not-found-message">
 									<img src={filmStrip} alt="кино-лента" />
-									<p children="В вашем городе мы не нашли фильмов :(" />
+									<p>В вашем городе мы<br />не нашли фильмов :(</p>
 								</Div>
 						}}
 					</Query>
