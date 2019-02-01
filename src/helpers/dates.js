@@ -1,5 +1,5 @@
 import moment from 'moment';
-
+require('moment/locale/ru');
 moment.locale('ru');
 
 export const localDate = (date = null, format = 'YYYY-MM-DD HH:mm:ss') => {
