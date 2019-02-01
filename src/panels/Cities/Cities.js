@@ -48,7 +48,7 @@ export default class Cities extends Component {
                             onChange={handleSearch} />
 
                         {(city && city.Name) &&
-                            <div className="cities__current-city">
+                            <div className="cities__current-city" onClick={go} data-to="home">
                                 <span className="cities__current-city-title" children={city.Name} />
                                 <Icon24DoneOutline className="cities__current-city-icon" />
                             </div>}
