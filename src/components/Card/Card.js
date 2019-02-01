@@ -10,7 +10,7 @@ const Card = ({ className, cover, title, genre, ageRestriction, maxTitleLength }
     <div className={classNames(className, 'card')}>
         {(cover) && <div className="card__cover" style={{ backgroundImage: `url('${cover}')` }} />}
         <h2 className="card__title" children={cutString(title, maxTitleLength)} />
-        <p className="card__hint" children={`${genre}, ${ageRestriction}+`} />
+        <p className="card__hint" children={`${genre}, ${ageRestriction || 0}+`} />
     </div>;
 
 Card.propTypes = {

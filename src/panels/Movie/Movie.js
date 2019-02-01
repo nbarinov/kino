@@ -107,7 +107,7 @@ export default class Movie extends React.Component {
 
                                     <Div>
                                         <h1 className="movie__name" children={movie.Name} />
-                                        <p className="movie__hint" children={`${movie.Genre}, ${movie.AgeRestriction}+`} />
+                                        <p className="movie__hint" children={`${movie.Genre}, ${movie.AgeRestriction || 0}+`} />
 
                                         {(loadingLink) ?
                                             <Query
