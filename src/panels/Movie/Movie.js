@@ -14,7 +14,7 @@ import { cutString } from '../../helpers/strings';
 import { date } from '../../helpers/dates';
 
 import Loader from '../../components/Loader';
-import ShowMoreText from 'react-show-more-text';
+import ShowMoreText from 'react-show-more';
 
 import './Movie.css';
 
