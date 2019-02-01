@@ -45,6 +45,14 @@ export default class Movie extends React.Component {
         const { id, go, movie, geo, city } = this.props;
         const { loadingLink } = this.state;
 
+        let lat = city.Latitude;
+        let long = city.Longitude;
+
+        if (geo) {
+            lat = geo.lat;
+            long = geo.long;
+        }
+
         return (movie) ?
             <Panel id={id}>
                 <PanelHeader
@@ -105,7 +113,7 @@ export default class Movie extends React.Component {
                                             <Query
                                                 query={gql`
                                                 query {
-                                                    schedule_url (CityID: ${city.CityID}, Latitude: ${geo.lat}, Longitude: ${geo.long}, ObjectID: ${movie.ObjectID}) {
+                                                    schedule_url (CityID: ${city.CityID}, Latitude: ${lat}, Longitude: ${long}, ObjectID: ${movie.ObjectID}) {
                                                         IsSaleAvailable,
                                                         Url,
                                                         HomeUrl
