@@ -32,7 +32,6 @@ class App extends React.Component {
 
 	componentWillMount() {
 		if (this.props.cities) {
-			console.log(1);
 			this.setState({ cities: this.props.cities });
 		}
 
@@ -93,8 +92,6 @@ class App extends React.Component {
 
 	render() {
 		const activePanel = this.props.pageId !== '' ? this.props.pageId : 'home';
-
-		console.log(this.state);
 
 		return (
 			<UI.ConfigProvider insets={this.props.insets} isWebView={isWebView}>
