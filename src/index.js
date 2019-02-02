@@ -12,7 +12,7 @@ import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import { API_URI } from './config';
 
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { HashRouter as Router, Route } from 'react-router-dom';
 import Loader from './components/Loader';
 import App from './App';
 
