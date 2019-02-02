@@ -96,7 +96,10 @@ class App extends React.Component {
 		return (
 			<UI.ConfigProvider insets={this.props.insets} isWebView={isWebView}>
 				<UI.Root activeView="mainView">
-					<UI.View id="mainView" activePanel={activePanel}>
+					<UI.View 
+						id="mainView" 
+						activePanel={activePanel}
+						onSwipeBack={() => this.props.history.goBack()}>
 						<Welcome
 							id="welcome"
 							isAvailableGeo={this.state.isAvailableGeo}
