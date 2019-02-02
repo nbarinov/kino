@@ -12,6 +12,7 @@ import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import { API_URI } from './config';
 
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Loader from './components/Loader';
 import App from './App';
 
@@ -36,7 +37,18 @@ render(
                 if (loading) return <Loader />;
                 if (error) return <p>Error :(</p>;
 
-                return <App cities={data.cities} />;
+                return (
+                    <Router>
+                        <Route 
+                            path="/:pageId(welcome|cities|search|movie|)?"
+                            component={props =>
+                                <App
+                                    {...props}
+                                    pageId={props.match.params.pageId}
+                                    cities={data.cities} />
+                            } />
+                    </Router>
+                );
             }}
         </Query>
     </ApolloProvider>,

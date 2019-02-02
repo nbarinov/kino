@@ -1,9 +1,10 @@
 import React from 'react';
-import { arrayOf, object, func } from 'prop-types';
+import { arrayOf, object } from 'prop-types';
 
 import { Group, Div } from '@vkontakte/vkui';
 
 import Input from '../../components/Input';
+import { Link } from 'react-router-dom';
 import Card from '../../components/Card';
 
 import filmStrip from '../../svg/film-strip.svg';
@@ -13,7 +14,6 @@ import './SearchMovies.css';
 export default class SearchMovies extends React.Component {
     static propTypes = {
         movies: arrayOf(object),
-        onSetMovie: func,
     };
 
     state = {
@@ -45,13 +45,15 @@ export default class SearchMovies extends React.Component {
                             {results.map(movie =>
                                 <li 
                                     className="search-movies__movie" 
-                                    key={movie.ObjectID} 
+                                    key={movie.ObjectID}
                                     onClick={onSetMovie && (() => onSetMovie(movie))}>
-                                    <Card
-                                        cover={movie.Thumbnail}
-                                        title={movie.Name}
-                                        genre={movie.Genre}
-                                        ageRestriction={movie.AgeRestriction} />
+                                    <Link className="search-movie__link" to={`/movie/${movie.ObjectID}`}>
+                                        <Card
+                                            cover={movie.Thumbnail}
+                                            title={movie.Name}
+                                            genre={movie.Genre}
+                                            ageRestriction={movie.AgeRestriction} />
+                                    </Link>
                                 </li>
                             )}
                         </ul>

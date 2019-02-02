@@ -16,7 +16,7 @@ const osname = platform();
 export default class Cities extends Component {
     static propTypes = {
         id: string.isRequired,
-        go: func.isRequired,
+        history: object.isRequired,
         city: object,
         cities: arrayOf(object).isRequired,
         onChange: func,
@@ -28,14 +28,14 @@ export default class Cities extends Component {
     };
 
     render() {
-        const { id, go, city } = this.props;
+        const { id, city, history } = this.props;
         const { results, isNotFound } = this.state;
         const { handleSearch, handleChangeCity } = this;
 
         return (
             <Panel id={id}>
                 <PanelHeader
-                    left={<HeaderButton onClick={go} data-to="home">
+                    left={<HeaderButton onClick={() => history.goBack()}>
                         {osname === IOS ? <Icon28ChevronBack /> : <Icon24Back />}
                     </HeaderButton>}
                     children="Смена города" />
@@ -48,7 +48,7 @@ export default class Cities extends Component {
                             onChange={handleSearch} />
 
                         {(city && city.Name) &&
-                            <div className="cities__current-city" onClick={go} data-to="home">
+                            <div className="cities__current-city" onClick={() => history.push('/')}>
                                 <span className="cities__current-city-title" children={city.Name} />
                                 <Icon24DoneOutline className="cities__current-city-icon" />
                             </div>}
@@ -89,7 +89,7 @@ export default class Cities extends Component {
     handleChangeCity = city => {
         if (this.props.onChange) {
             this.props.onChange(city);
-            this.props.go('home');
+            this.props.history.goBack();
         }
     }
 }

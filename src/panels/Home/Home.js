@@ -1,5 +1,5 @@
 import React from 'react';
-import { string, func, shape } from 'prop-types';
+import { string, object, shape, func } from 'prop-types';
 
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
@@ -11,21 +11,22 @@ import Icon24Write from '@vkontakte/icons/dist/24/write';
 import { APP_NAME } from '../../config';
 
 import Loader from '../../components/Loader';
+import { Link } from 'react-router-dom';
 import Card from '../../components/Card';
 
 import filmStrip from '../../svg/film-strip.svg';
 
 import './Home.css';
 
-const Home = ({ id, go, city, onSetMovie, isAvailableGeo, onGetGeodata }) => (
+const Home = ({ id, city, isAvailableGeo, onGetGeodata, onSetMovie, history }) => (
 	<Panel id={id}>
 		<PanelHeader
-			left={<HeaderButton onClick={go} data-to="search"><Icon24Search /></HeaderButton>}
+			left={<HeaderButton onClick={() => history.push('/search')}><Icon24Search /></HeaderButton>}
 			children={APP_NAME} />
 
 		<Group>
 			<Div>
-				<button className="home__change-city-button" onClick={(isAvailableGeo === null) ? onGetGeodata : go} data-to="cities">
+				<button className="home__change-city-button" onClick={(isAvailableGeo === null) ? onGetGeodata : () => history.push('/cities')}>
 					<span className="home__change-city-title">
 						{(city && city.Name) ?
 							`г. ${city.Name}` :
@@ -64,11 +65,13 @@ const Home = ({ id, go, city, onSetMovie, isAvailableGeo, onGetGeodata }) => (
 											className="home__movie" 
 											key={movie.ObjectID}
 											onClick={onSetMovie && (() => onSetMovie(movie))}>
-											<Card
-												cover={movie.Thumbnail}
-												title={movie.Name}
-												genre={movie.Genre}
-												ageRestriction={movie.AgeRestriction} />
+											<Link className="home__link" to={`/movie/${movie.ObjectID}`}>
+												<Card
+													cover={movie.Thumbnail}
+													title={movie.Name}
+													genre={movie.Genre}
+													ageRestriction={movie.AgeRestriction} />
+											</Link>
 										</li>
 									)}
 								</ul>:
@@ -86,13 +89,13 @@ const Home = ({ id, go, city, onSetMovie, isAvailableGeo, onGetGeodata }) => (
 
 Home.propTypes = {
 	id: string.isRequired,
-	go: func.isRequired,
+	history: object.isRequired,
 	city: shape({
 		CityID: string.isRequired,
 		Name: string.isRequired
 	}),
-	onSetMovie: func,
 	onGetGeodata: func.isRequired,
+	onSetMovie: func.isRequired,
 };
 
 export default Home;

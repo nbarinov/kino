@@ -71,3 +71,9 @@
     text-align: center;
     text-transform: uppercase;
 }
+
+.home__link,
+.home__link:hover,
+.home__link:focus {
+    text-decoration: none;
+}

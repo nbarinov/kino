@@ -2,7 +2,8 @@ import React from 'react';
 import { arrayOf, object } from 'prop-types';
 
 import connect from '@vkontakte/vkui-connect';
-import { View } from '@vkontakte/vkui';
+import * as UI from '@vkontakte/vkui';
+import { isWebView } from '@vkontakte/vkui/src/lib/webview';
 import '@vkontakte/vkui/dist/vkui.css';
 
 import sortByDistance from './helpers/sort-by-distance';
@@ -18,10 +19,10 @@ import './App.css';
 class App extends React.Component {
 	static propTypes = {
 		cities: arrayOf(object),
+		history: object.isRequired,
 	}
 
 	state = {
-		activePanel: 'welcome',
 		geo: null,
 		isAvailableGeo: null,
 		cities: null,
@@ -30,22 +31,14 @@ class App extends React.Component {
 	};
 
 	componentWillMount() {
-		let cities = null;
-		let activePanel = 'welcome';
-
 		if (this.props.cities) {
-			cities = this.props.cities;
+			console.log(1);
+			this.setState({ cities: this.props.cities });
 		}
 
-		if (localStorage.getItem('welcome-done')) {
-			activePanel = 'home';
-		}
-
-		if (cities !== null || activePanel !== 'welcome') {
-			this.setState({
-				activePanel,
-				cities
-			});
+		// если пользователь не прошел обучение
+		if (!localStorage.getItem('welcome-done')) {
+			this.props.history.push('/welcome');
 		}
 	}
 
@@ -99,51 +92,54 @@ class App extends React.Component {
 	}
 
 	render() {
+		const activePanel = this.props.pageId !== '' ? this.props.pageId : 'home';
+
+		console.log(this.state);
+
 		return (
-			<View activePanel={this.state.activePanel}>
-				<Welcome
-					id="welcome"
-					isAvailableGeo={this.state.isAvailableGeo}
-					city={this.state.city}
-					onGetGeodata={this.handleGetGeodata}
-					onAllowNotofication={this.handleAllowNotofication}
-					skipWelcome={this.skipWelcome} />
-				<Home 
-					id="home" 
-					go={this.go} 
-					isAvailableGeo={this.state.isAvailableGeo}
-					onGetGeodata={this.handleGetGeodata}
-					city={this.state.city}
-					onSetMovie={this.handleSetMovie} />
-				<Cities 
-					id="cities" 
-					go={this.go} 
-					cities={this.state.cities} 
-					city={this.state.city} 
-					onChange={this.handleChangeCity} />
-				<Search
-					id="search"
-					go={this.go}
-					city={this.state.city}
-					onSetMovie={this.handleSetMovie} />
-				<Movie
-					id="movie"
-					go={this.go}
-					movie={this.state.movie}
-					city={this.state.city}
-					geo={this.state.geo}  />
-			</View>
+			<UI.ConfigProvider insets={this.props.insets} isWebView={isWebView}>
+				<UI.Root activeView="mainView">
+					<UI.View id="mainView" activePanel={activePanel}>
+						<Welcome
+							id="welcome"
+							isAvailableGeo={this.state.isAvailableGeo}
+							city={this.state.city}
+							onGetGeodata={this.handleGetGeodata}
+							onAllowNotofication={this.handleAllowNotofication}
+							skipWelcome={this.skipWelcome} />
+						<Home
+							id="home"
+							history={this.props.history}
+							isAvailableGeo={this.state.isAvailableGeo}
+							onGetGeodata={this.handleGetGeodata}
+							city={this.state.city}
+							onSetMovie={this.handleSetMovie} />
+						<Cities
+							id="cities"
+							history={this.props.history}
+							cities={this.state.cities}
+							city={this.state.city}
+							onChange={this.handleChangeCity} />
+						<Search
+							id="search"
+							history={this.props.history}
+							city={this.state.city}
+							onSetMovie={this.handleSetMovie} />
+						<Movie
+							id="movie"
+							history={this.props.history}
+							movie={this.state.movie}
+							city={this.state.city}
+							geo={this.state.geo} />
+					</UI.View>
+				</UI.Root>
+			</UI.ConfigProvider>
 		);
 	}
 
-	go = e =>
-		this.setState({ 
-			activePanel: (typeof e === 'object') ? e.currentTarget.dataset.to : e, 
-		});
-
 	handleChangeCity = city => this.setState({ city });
 	
-	handleSetMovie = movie => this.setState(({ movie }), () => this.go('movie'));
+	handleSetMovie = movie => this.setState({ movie });
 
 	handleGetGeodata = () => connect.send("VKWebAppGetGeodata", {}) || this.setState({ isAvailableGeo: false });
 
@@ -151,7 +147,7 @@ class App extends React.Component {
 
 	skipWelcome = () => {
 		localStorage.setItem('welcome-done', true);
-		this.go('home');
+		this.props.history.push('/');
 	}
 }
 

@@ -45,3 +45,9 @@
     text-align: center;
     text-transform: uppercase;
 }
+
+.search-movie__link,
+.search-movie__link:hover,
+.search-movie__link:focus {
+    text-decoration: none;
+}
