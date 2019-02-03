@@ -99,7 +99,7 @@ class App extends React.Component {
 					<UI.View 
 						id="mainView" 
 						activePanel={activePanel}
-						onSwipeBack={() => this.props.history.goBack()}>
+						onSwipeBack={this.goBack}>
 						<Welcome
 							id="welcome"
 							isAvailableGeo={this.state.isAvailableGeo}
@@ -148,7 +148,9 @@ class App extends React.Component {
 	skipWelcome = () => {
 		localStorage.setItem('welcome-done', true);
 		this.props.history.push('/');
-	}
+	};
+
+	goBack = () => this.props.history.goBack();
 }
 
 export default App;

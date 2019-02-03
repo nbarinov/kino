@@ -1,10 +1,13 @@
 import React from 'react';
 import { string, func } from 'prop-types';
 
-import { Panel, PanelHeader, Group, Div, Gallery, Button } from '@vkontakte/vkui';
+import { Panel, PanelHeader, Gallery, Button } from '@vkontakte/vkui';
 import Icon24Write from '@vkontakte/icons/dist/24/write';
 
 import { APP_NAME } from '../../config';
+
+import Group from '../../components/Group';
+import Div from '../../components/Div';
 
 import slide1 from '../../images/welcome/1.png';
 import slide2 from '../../images/welcome/2.png';
