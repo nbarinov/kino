@@ -10,7 +10,6 @@ import Icon24Back from '@vkontakte/icons/dist/24/back';
 
 import Message from '../../components/Message';
 import Loader from '../../components/Loader';
-import Message from '../../components/Message';
 import SearchMovies from './SearchMovies';
 
 import './Search.css';

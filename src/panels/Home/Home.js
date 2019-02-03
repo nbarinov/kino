@@ -4,7 +4,7 @@ import { string, object, shape, func } from 'prop-types';
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 
-import { Panel, PanelHeader, HeaderButton } from '@vkontakte/vkui';
+import { Panel, PanelHeader, HeaderButton, Button } from '@vkontakte/vkui';
 import Icon24Search from '@vkontakte/icons/dist/24/search';
 import Icon24Write from '@vkontakte/icons/dist/24/write';
 
