@@ -1,6 +1,5 @@
-.search-movies__group,
-.search-movies__group * {
-    box-sizing: border-box;
+.search-movies__group {
+    margin-bottom: 20px;
 }
 
 .search-movies__movies {

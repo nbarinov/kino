@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { string, func, object, arrayOf } from 'prop-types';
 
-import { Panel, PanelHeader, HeaderButton, platform, IOS, Group, Div } from '@vkontakte/vkui';
+import { Panel, PanelHeader, HeaderButton, platform, IOS } from '@vkontakte/vkui';
 import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
 import Icon24DoneOutline from '@vkontakte/icons/dist/24/done_outline';
 
+import Group from '../../components/Group';
+import Div from '../../components/Div';
 import Input from '../../components/Input';
 import CitiesList from './CitiesList';
 
@@ -55,8 +57,8 @@ export default class Cities extends Component {
                     </Div>
                 </Group>
 
-                <Group>
-                    <Div className="Div--p-0">
+                <Group className="cities__group">
+                    <Div paddingOff={true}>
                         {(isNotFound) ?
                             <p className="cities__error" children="О таком городе мы никогда не слышали" /> :
                             <CitiesList

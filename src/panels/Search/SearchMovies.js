@@ -1,8 +1,8 @@
 import React from 'react';
 import { arrayOf, object } from 'prop-types';
 
-import { Group, Div } from '@vkontakte/vkui';
-
+import Group from '../../components/Group';
+import Div from '../../components/Div';
 import Input from '../../components/Input';
 import { Link } from 'react-router-dom';
 import Card from '../../components/Card';

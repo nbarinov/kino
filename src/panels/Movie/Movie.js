@@ -5,7 +5,7 @@ import { Query } from "react-apollo";
 import gql from "graphql-tag";
 
 import {
-    Panel, PanelHeader, HeaderButton, platform, IOS, Group, Div, Button, Gallery
+    Panel, PanelHeader, HeaderButton, platform, IOS, Button, Gallery
 } from '@vkontakte/vkui';
 import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
@@ -13,6 +13,8 @@ import Icon24Back from '@vkontakte/icons/dist/24/back';
 import { cutString } from '../../helpers/strings';
 import { date } from '../../helpers/dates';
 
+import Group from '../../components/Group';
+import Div from '../../components/Div';
 import Loader from '../../components/Loader';
 import ShowMoreText from 'react-show-more';
 

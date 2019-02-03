@@ -29,6 +29,10 @@
     color: var(--gray);
 }
 
+.home__group {
+    margin-bottom: 20px;
+}
+
 .home__movies {
     display: flex;
     flex-wrap: wrap;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { arrayOf, object } from 'prop-types';
 
-import connect from '@vkontakte/vkui-connect';
+import connect from '@vkontakte/vkui-connect-mock';
 import * as UI from '@vkontakte/vkui';
 import { isWebView } from '@vkontakte/vkui/src/lib/webview';
 import '@vkontakte/vkui/dist/vkui.css';

@@ -17,3 +17,7 @@
     color: var(--white);
     text-align: center;
 }
+
+.cities__group {
+    margin-bottom: 20px;
+}

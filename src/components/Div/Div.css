@@ -1,0 +1,11 @@
+.div {
+    padding-top: 0;
+    padding-right: 20px;
+    padding-bottom: 0;
+    padding-left: 20px;
+}
+
+.div--p-0 {
+    padding-right: 0;
+    padding-left: 0;
+}

@@ -4,15 +4,18 @@ import { string, object, shape, func } from 'prop-types';
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 
-import { Panel, Group, Div, PanelHeader, HeaderButton } from '@vkontakte/vkui';
+import { Panel, PanelHeader, HeaderButton } from '@vkontakte/vkui';
 import Icon24Search from '@vkontakte/icons/dist/24/search';
 import Icon24Write from '@vkontakte/icons/dist/24/write';
 
 import { APP_NAME } from '../../config';
 
+import Group from '../../components/Group';
+import Div from '../../components/Div';
 import Loader from '../../components/Loader';
 import { Link } from 'react-router-dom';
 import Card from '../../components/Card';
+
 
 import filmStrip from '../../svg/film-strip.svg';
 
@@ -40,7 +43,7 @@ const Home = ({ id, city, isAvailableGeo, onGetGeodata, onSetMovie, history }) =
 		</Group>
 
 		{(city && city.CityID) &&
-			<Group>
+			<Group className="home__group">
 				<Div>
 					<Query
 						query={gql`
