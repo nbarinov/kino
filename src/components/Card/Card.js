@@ -4,13 +4,15 @@ import classNames from 'classnames'
 
 import { cutString } from '../../helpers/strings';
 
+import notCover from '../../images/not-cover.png';
+
 import './Card.css';
 
 const Card = ({ className, cover, title, genre, ageRestriction, maxTitleLength }) =>
     <div className={classNames(className, 'card')}>
-        {(cover) && <div className="card__cover" style={{ backgroundImage: `url('${cover}')` }} />}
+        <div className="card__cover" style={{ backgroundImage: `url('${cover || notCover}')` }} />
         <h2 className="card__title" children={cutString(title, maxTitleLength)} />
-        <p className="card__hint" children={`${genre}, ${ageRestriction || 0}+`} />
+        <p className="card__hint" children={`${(genre) && genre + ', '}${(ageRestriction) && ageRestriction + '+'}`} />
     </div>;
 
 Card.propTypes = {
