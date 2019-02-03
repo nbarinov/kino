@@ -15,7 +15,7 @@ import Div from '../../components/Div';
 import Loader from '../../components/Loader';
 import { Link } from 'react-router-dom';
 import Card from '../../components/Card';
-
+import Message from '../../components/Message';
 
 import filmStrip from '../../svg/film-strip.svg';
 
@@ -59,7 +59,19 @@ const Home = ({ id, city, isAvailableGeo, onGetGeodata, onSetMovie, history }) =
 						`}>
 						{({ loading, error, data }) => {
 							if (loading) return <Loader />;
-							if (error) return <p>Error :(</p>;
+							if (error) return (
+								<Message
+									type="error"
+									onCloseMessage={() => history.push('/')}
+									action={
+										<Button
+											size="xl"
+											level="2"
+											children="Повторить"
+											onClick={() => history.goBack()} />
+									}
+									children="Мы не смогли загрузить фильмы :(" />
+							);
 
 							return (data.movies && data.movies.length > 0) ?
 								<ul className="home__movies">

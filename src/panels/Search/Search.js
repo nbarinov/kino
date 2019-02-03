@@ -8,6 +8,7 @@ import { Panel, PanelHeader, HeaderButton, platform, IOS, Button } from '@vkonta
 import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
 
+import Message from '../../components/Message';
 import Loader from '../../components/Loader';
 import Message from '../../components/Message';
 import SearchMovies from './SearchMovies';
@@ -39,7 +40,19 @@ const Search = ({ id, city, onSetMovie, history }) =>
                 `}>
                 {({ loading, error, data }) => {
                     if (loading) return <Loader />;
-                    if (error) return <p>Error :(</p>;
+                    if (error) return (
+                        <Message
+                            type="error"
+                            onCloseMessage={() => history.push('/')}
+                            action={
+                                <Button
+                                    size="xl"
+                                    level="2"
+                                    children="Вернуться назад"
+                                    onClick={() => history.goBack()} />
+                            }
+                            children="Мы не смогли загрузить фильмы :(" />
+                    );
 
                     return <SearchMovies movies={data.movies} onSetMovie={onSetMovie} />;
                 }}
@@ -52,7 +65,8 @@ const Search = ({ id, city, onSetMovie, history }) =>
                         level="2" 
                         children="Выбрать город"
                         onClick={() => history.push('/cities')} />
-                }>
+                }
+                onCloseMessage={() => history.push('/')}>
                 Чтобы посмотреть доступные<br />сеансы, выберите город
             </Message>}
 

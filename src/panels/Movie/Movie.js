@@ -17,6 +17,7 @@ import Group from '../../components/Group';
 import Div from '../../components/Div';
 import Loader from '../../components/Loader';
 import ShowMoreText from 'react-show-more';
+import Message from '../../components/Message';
 
 import './Movie.css';
 
@@ -62,7 +63,19 @@ const Movie = ({ id, movie, geo, city, history }) => {
                 `}>
                 {({ loading, error, data }) => {
                     if (loading) return <Loader style={{ marginTop: 20 }} />;
-                    if (error) return <p>Error :(</p>;
+                    if (error) return (
+                        <Message
+                            type="error"
+                            onCloseMessage={() => history.push('/')}
+                            action={
+                                <Button
+                                    size="xl"
+                                    level="2"
+                                    children="Вернуться назад"
+                                    onClick={() => history.goBack()} />
+                            }
+                            children="Что-то пошло не так..." />
+                    );
 
                     const movie = data.movie;
 
@@ -99,7 +112,7 @@ const Movie = ({ id, movie, geo, city, history }) => {
                                         `}>
                                         {({ loading, error, data }) => {
                                             if (loading) return <Loader style={{ marginTop: 20 }} />;
-                                            if (error) return <p>Error :(</p>;
+                                            // if (error) return <p>Error :(</p>;
 
                                             return (
                                                 <Button
