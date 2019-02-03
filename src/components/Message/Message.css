@@ -8,12 +8,12 @@
 
 .message__wrapper {
     position: absolute;
-    top: 25vh;
+    bottom: 0;
     left: 50vw;
     transform: translate(-50%, -50%);
 
     width: 100%;
-    max-width: calc(100% - 40px);
+    max-width: calc(100% - 20px);
 
     border-radius: 2px;
     
@@ -26,11 +26,29 @@
     box-shadow: var(--box-shadow--main);
 }
 
+.message__header {
+    display: flex;
+    justify-content: flex-end;
+    
+    padding: 8px;
+}
+
+.message__close {
+    border: 0;
+
+    background-color: transparent;
+    
+    font-size: 0;
+
+    color: #fff;
+}
+
 .message__icon {
     margin: 25px auto;
 }
 
-.message__icon--report {
+.message__icon--report,
+.message__icon--error {
     color: var(--red);
 }
 
