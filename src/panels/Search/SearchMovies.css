@@ -50,3 +50,14 @@
 .search-movie__link:focus {
     text-decoration: none;
 }
+
+
+@media (max-width: 545px) {
+    .search-movies__movie {       
+        width: calc(100% / 3);
+    }
+
+    .search-movies__movie:nth-last-child(-n + 3) {
+        margin-bottom: 0;
+    }
+}
