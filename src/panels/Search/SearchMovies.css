@@ -52,7 +52,7 @@
 }
 
 
-@media (max-width: 545px) {
+@media (min-width: 545px) {
     .search-movies__movie {       
         width: calc(100% / 3);
     }
