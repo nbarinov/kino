@@ -37,8 +37,10 @@ class App extends React.Component {
 
 		// если пользователь не прошел обучение
 		if (!localStorage.getItem('welcome-done')) {
-			this.props.history.push('/welcome');
+			return this.props.history.push('/welcome');
 		}
+		
+		connect.send('VKWebAppEnableSwipeBack');
 	}
 
 	componentDidMount() {
