@@ -101,9 +101,9 @@ export default class Welcome extends React.Component {
 
                 <img src={slide2} alt="slide2" style={{ width: 320, height: 290 }} />
                 <div className="welcome__contnet">
-                    <h2 className="welcome__title" children="127+ городов" />
+                    <h2 className="welcome__title" children="500+ кинотеатров по России" />
                     <p className="welcome__hint">
-                        Выбери свой, и мы покажем<br />доступные сеансы
+                        Сервис автоматически покажет<br />ближайшие из них
                     </p>
                 </div>
                 <div className="welocome__buttons">
