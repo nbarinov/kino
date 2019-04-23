@@ -77,7 +77,7 @@ export default class Welcome extends React.Component {
                         size="xl"
                         level="2"
                         children="Далее"
-                        onClick={() => this.changeSlide(this.state.slideIndex + 1)} />
+                        onClick={() => this.changeSlide(1)} />
                 </div>
             </div>
         );
@@ -118,7 +118,7 @@ export default class Welcome extends React.Component {
                         size="xl"
                         level="2"
                         children="Далее"
-                        onClick={() => this.changeSlide(this.state.slideIndex + 1)} />
+                        onClick={() => this.changeSlide(2)} />
                 </div>
             </div>
         );
